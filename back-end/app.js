@@ -78,5 +78,19 @@ app.post('/messages/save', async (req, res) => {
   }
 })
 
-// export the express app we created to make it available to other modules
+// serve static files (like my photo) from the public folder
+app.use('/static', express.static('public'))
+
+// a route that returns the About Us page content as JSON
+app.get('/about', (req, res) => {
+  res.json({
+    name: 'Estifanos',
+    paragraphs: [
+      "Hi, I'm Estifanos. I'm from Ethiopia and study Computer Science at NYU Abu Dhabi.",
+      'This semester I am studying away at NYU Tulsa.',
+      "Outside of class I am interested in technology, music, and football. I'm a Manchester United fan, even though they keep disappointing me every time.",
+    ],
+    imageUrl: 'https://github.com/Estifanos-Wassie.png',
+  })
+})// export the express app we created to make it available to other modules
 module.exports = app // CommonJS export style!
